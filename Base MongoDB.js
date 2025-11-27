@@ -28,11 +28,11 @@ db.subastas.insertMany([{
   nombre: "Nicol Bolas MTG",
   precio: 10000,
 	tiempo: 10,
-  categoria: ["cartas", "juego de mesa", "coleccionables", "hasbro"],
+  categoria: ["cartas", "juego de mesa", "coleccionable", "hasbro"],
 	imagen: "http:Link-Imagen.com",
 	ganador: "Benjamin",
 	estado: "activa",
-	ganada: true,
+	ganada: false,
   fecha: new Date()
 },{
   nombre: "Armadura de Iron Man Mark 1 Original",
@@ -48,6 +48,9 @@ db.subastas.insertMany([{
 }])
 
 // Simulacion de puja
+
+db.subastas.find({ categoria: "coleccionable" })
+
 db.subastas.updateOne(
   { nombre: "Nicol Bolas MTG" },
   { $inc: { precio: 1000 } }
@@ -55,21 +58,33 @@ db.subastas.updateOne(
 
 db.subastas.updateOne(
   { nombre: "Nicol Bolas MTG" },
+  { $set: { ganador : "juan" } }
+)
+
+db.subastas.updateMany(
+  {},
   { $inc: { tiempo : -10 } }
 )
 
+
 db.subastas.updateOne(
   { nombre: "Nicol Bolas MTG" },
-  { $set: { ganador : "juan" } }
+  { $set: { ganada : true } }
 )
 
 db.subastas.find({ ganada: true })
 
+db.usuario.updateOne(
+  { nombre: "Juan" },
+  { $inc: { presupuesto : -11000 } }
+)
+
+//fin simulacion
 
 db.ganadores.insertOne([{
   nombreProducto: "Nicol Bolas MTG",
   usuarioGanador: "Juan",
-  precioFinal:10000,
+  precioFinal:11000,
   fecha: new Date()
 }])
 
@@ -91,5 +106,31 @@ db.envios.insertOne({
   fechaEnvio: null,
   fechaEntrega: null
 });
+
+//simulacion 
+
+db.envios.updateOne(
+  {usuario : "Juan"},
+  {$set: {fechaEnvio: new Date}})
+
+db.envios.updateOne(
+  {usuario : Juan},
+  {$set: {fechaEntrega: new Date}})
+
+db.envios.updateOne(
+  {usuario : "Juan"},
+  { $set: { entregado: true } }
+);
+
+
+db.ganadores.deleteOne(
+  {usuarioGanador : "Juan"}
+)
+
+
+
+
+
+
 
 
