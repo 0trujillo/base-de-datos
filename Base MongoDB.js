@@ -27,11 +27,11 @@ db.subastas.insertMany([{
 },{
   nombre: "Nicol Bolas MTG",
   precio: 10000,
-	tiempo: 0,
+	tiempo: 10,
   categoria: ["cartas", "juego de mesa", "coleccionables", "hasbro"],
 	imagen: "http:Link-Imagen.com",
-	ganador: "Juan",
-	estado: "inactiva",
+	ganador: "Benjamin",
+	estado: "activa",
 	ganada: true,
   fecha: new Date()
 },{
@@ -47,12 +47,23 @@ db.subastas.insertMany([{
 },{
 }])
 
+// Simulacion de puja
 db.subastas.updateOne(
   { nombre: "Nicol Bolas MTG" },
   { $inc: { precio: 1000 } }
 )
 
-db.subastas.find({ activa: true })
+db.subastas.updateOne(
+  { nombre: "Nicol Bolas MTG" },
+  { $inc: { tiempo : -10 } }
+)
+
+db.subastas.updateOne(
+  { nombre: "Nicol Bolas MTG" },
+  { $set: { ganador : "juan" } }
+)
+
+db.subastas.find({ ganada: true })
 
 
 db.ganadores.insertOne([{
