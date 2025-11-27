@@ -1,6 +1,16 @@
+use Subastas
+
 db.usuario.insertOne({
-  nombre:"benjamin",
-  password: "benjamin",
+  nombre:"Juan",
+  apellido: "Perez",
+  password: "4321",
+	presupuesto:20000
+});
+
+db.usuario.insertOne({
+  nombre:"Benjamin",
+  apellido: "Polanco",
+  password: "1234",
 	presupuesto:20000
 });
 
@@ -20,7 +30,7 @@ db.subastas.insertMany([{
 	tiempo: 0,
   categoria: ["cartas", "juego de mesa", "coleccionables", "hasbro"],
 	imagen: "http:Link-Imagen.com",
-	ganador: "Diony",
+	ganador: "Juan",
 	estado: "inactiva",
 	ganada: true,
   fecha: new Date()
@@ -40,7 +50,7 @@ db.subastas.insertMany([{
 
 db.ganadores.insertOne([{
   nombreProducto: "Nicol Bolas MTG",
-  usuarioGanador: "Diony",
+  usuarioGanador: "Juan",
   precioFinal:10000,
   fecha: new Date()
 }])
@@ -63,3 +73,5 @@ db.envios.insertOne({
   fechaEnvio: null,
   fechaEntrega: null
 });
+
+
