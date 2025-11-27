@@ -47,6 +47,13 @@ db.subastas.insertMany([{
 },{
 }])
 
+db.subastas.updateOne(
+  { nombre: "Nicol Bolas MTG" },
+  { $inc: { precio: 1000 } }
+)
+
+db.subastas.find({ activa: true })
+
 
 db.ganadores.insertOne([{
   nombreProducto: "Nicol Bolas MTG",
@@ -57,16 +64,16 @@ db.ganadores.insertOne([{
 
 db.envios.insertOne({
   subastaId: ObjectId('692793dcc5f3a032926f1f4d'),
-  usuario: "Diony",
+  usuario: "Juan",
   nombreProducto: "Nicol Bolas MTG",
   imagen: "https://img.png/",
   precio: 10000,
 
-  direccion: "Calle Falsa 123",
+  direccion: "Calle Portugal 123",
   ciudad: "Santiago",
   region: "RM",
   telefono: "+5691234",
-  nombreCompleto: "Diony Peguero De la Cruz",
+  nombreCompleto: "Juan Perez",
 
   estado: "PENDIENTE_ENVIO",
   fechaCreacion: new Date(),
